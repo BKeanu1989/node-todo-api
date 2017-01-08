@@ -98,8 +98,6 @@ app.patch('/todos/:id', (req,res) => {
 
 app.listen(port, () => {
 	console.log(`Server up at port ${port}`);
-	console.log(process.env);
-	console.log(process.env.HOME);
 });
 
 module.exports = {app};
