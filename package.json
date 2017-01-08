@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
   "keywords": [],
+  "engines": {
+    "node": "6.5.0"
+  },
   "author": "Kevin Fechner <bkevinfechner1989@gmail.com>",
   "license": "MIT",
   "dependencies": {
