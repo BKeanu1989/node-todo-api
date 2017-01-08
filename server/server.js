@@ -11,6 +11,8 @@ var {User} = require('./models/user');
 
 var app = express();
 
+const port = process.env.PORT;
+
 app.use(bodyParser.json());
 
 app.post('/todos', (req,res) => {
@@ -96,8 +98,8 @@ app.patch('/todos/:id', (req,res) => {
 	})
 })
 
-app.listen(process.env.PORT, () => {
-	console.log(`Server up at port ${process.env.PORT}`);
+app.listen(port, () => {
+	console.log(`Server up at port ${port}`);
 });
 
 module.exports = {app};
