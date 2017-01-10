@@ -4,6 +4,7 @@ const express = require('express');
 // converts json into object
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
+const bcrypt = require('bcryptjs');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
@@ -118,6 +119,18 @@ app.get('/users/me', authenticate, (req,res) => {
 	res.send(req.user);
 });
 
+app.post('/users/login', (req,res) => {
+	var email = req.body.email;
+	var password = req.body.password;
+
+	User.findByCredentials(email, password).then((user) => {
+		return user.generateAuthToken().then((token) => {
+			res.header('x-auth', token).send(user);
+		});
+	}).catch((err) => {
+		res.status(400).send();
+	});
+});
 
 app.listen(port, () => {
 	console.log(`Server up at port ${port}`);
