@@ -88,7 +88,7 @@ UserSchema.statics.findByCredentials = function (email, password) {
 			return Promise.reject();
 		}
 
-		// wrap inside new Promise to make it a promise to avoid the callback problem
+		// wrap inside new Promise to make it a promise to avoid callback problem
 		return new Promise((resolve, reject) => {
 			bcrypt.compare(password, user.password, (err, res) => {
 				if (res) {
