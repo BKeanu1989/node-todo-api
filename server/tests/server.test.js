@@ -319,3 +319,23 @@ describe('POST /users/login', () => {
 
 });
 
+
+describe('DELETE /users/me/token', () => {
+	it('should remove auth token on logout', (done) => {
+		var token = users[0].tokens[0].token;
+		request(app)
+			.delete('/users/me/token')
+			.set('x-auth', token)
+			.expect(200)
+			.expect((res) => {
+				expect(res.headers['x-auth']).toNotExist();
+			})
+			.end((err, res) => {
+				if (err) return done(err);
+				User.findByToken(token).then((user) => {
+					expect(user).toNotExist();
+					done();
+				}).catch((err) => done(err));
+			});			
+	});
+});
