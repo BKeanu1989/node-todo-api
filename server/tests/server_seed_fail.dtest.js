@@ -183,7 +183,7 @@ describe('PATCH /todos/:id', () => {
 		}
 		request(app)
 			.patch(`/todos/${id}`)
-			.set('x-auth', users[0].tokens[0].token)
+			// .set('x-auth', users[0].tokens[0].token)
 			.send(testBody)
 			.expect(200)
 			.expect((res) => {
@@ -226,7 +226,7 @@ describe('PATCH /todos/:id', () => {
 		var testBody = { completed: false }
 		request(app)
 			.patch(`/todos/${id}`)
-			.set('x-auth', users[0].tokens[0].token)
+			// .set('x-auth', users[0].tokens[0].token)
 			.send(testBody)
 			.expect(200)
 			.expect((res) => {
@@ -326,7 +326,6 @@ describe('POST /users/login', () => {
 				email: users[1].email,
 				password: users[1].password
 			})
-			.set('x-auth', users[1].tokens[0])
 			.expect(200)
 			.expect((res) => {
 				expect(res.headers['x-auth']).toExist();
@@ -352,7 +351,7 @@ describe('POST /users/login', () => {
 				password: 'wrong'
 			})
 			.expect(400)
-			.end(done);
+			.expect(done);
 			});
 	});
 
