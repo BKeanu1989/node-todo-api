@@ -21,7 +21,7 @@
     "crypto-js": "3.1.6",
     "express": "4.14.0",
     "jsonwebtoken": "7.1.9",
-    "lodash": "4.15.0",
+    "lodash": "4.17.17",
     "mongodb": "2.2.5",
     "mongoose": "4.5.9",
     "validator": "5.6.0"
